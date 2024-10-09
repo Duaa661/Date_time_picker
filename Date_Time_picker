@@ -1,0 +1,32 @@
+body:Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Select Date',
+              style:TextStyle(fontSize: 25) ,
+            ),
+            ElevatedButton(onPressed: () async {
+              DateTime? datepicked=await showDatePicker(
+                  context: context,
+                  initialDate:DateTime.now() ,
+                  firstDate: DateTime(2021),
+                  lastDate: DateTime(2024));
+              if(datepicked!=null){
+                print('Date selected:${datepicked.day}-${datepicked.month}-${datepicked.year}');
+              }
+            }, child: Text('Show')),
+            ElevatedButton(onPressed: () async{
+              TimeOfDay? pickedTime= await showTimePicker(
+                  context: context,
+              initialTime:TimeOfDay.now(),
+                initialEntryMode: TimePickerEntryMode.input
+              );
+                  if(pickedTime!=null)
+              {
+                print('Time Selcted:${pickedTime.hour}-${pickedTime.minute}');
+              }
+            }, child: Text('Selct Time'))
+          ],
+        ),
+      )
